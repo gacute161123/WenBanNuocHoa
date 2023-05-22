@@ -1,0 +1,7 @@
+﻿.dangnhap {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Thêm thuộc tính này để căn giữa theo chiều dọc */
+    height: 100vh; /* Để form chiếm đủ chiều cao của trang */
+}
+

@@ -1,0 +1,128 @@
+﻿@model BanNuocHoa.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/coloshop-master/styles/categories_styles.css">
+<h2>Login</h2>
+<br />
+<br />
+<br />
+<br />
+
+<div class="breadcrumbs d-flex flex-row align-items-center">
+    <ul style="margin-left:50px">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li class="active"><a href="@Url.Action("Login","LOGINs")"><i class="fa fa-angle-right" aria-hidden="true"></i>Tài khoản</a></li>
+    </ul>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="dangnhap" style=" margin-left:25%">
+        <div class="row" style="width: 100%;">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="page-login account-box-shadow">
+                    <div id="login">
+                        <div class="text-center margin-bottom-30">
+                            <h1 class="title-head" style="font-size: 26px; line-height: 28px; margin: 0; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; ">Tài khoản</h1>
+                            <p style="font-size: 10px; color:black; line-height: 40px; margin: 0; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; ">
+                                Đăng nhập để mua hàng và sử dụng những tiện ích mới nhất từ Edopt
+                                <strong></strong>
+                            </p>
+                        </div>
+                        <div class="social-login text-center margin-bottom-10">
+
+
+
+                        </div>
+                        <form accept-charset="UTF-8" action="" id="customer_login" method="post" class="has-validation-callback">
+                            <input name="form_type" type="hidden" value="customer_login">
+                            <input name="utf8" type="hidden" value="✓">
+
+
+                            <div class="form-signup clearfix">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+
+
+                                    <pre class="control-label col-md-4">Tên đăng nhập</pre>
+                                    <div class="col-md-14">
+                                        @Html.EditorFor(model => model.Nguoidung_user, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Nguoidung_user, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                           
+                                    <div class="form-group">
+
+                                        <pre class="control-label col-md-4">Mật Khẩu</pre>
+                                        <div class="col-md-14">
+                                            @Html.EditorFor(model => model.Nguoidung_pass, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Nguoidung_pass, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                
+
+                                    <div class="text-center margin-bottom-30">
+                                        <div class="form-group" style="margin-top: 20px; margin-left:15%;">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="ĐĂNG NHẬP" class="btn btn-outline-secondary" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                  
+                                    <div class="text-login text-center">
+                                        <p>
+                                            Bạn chưa có tài khoản. Đăng ký <a href="/LOGINs/Register" title="Đăng ký">tại đây.</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <input id="79d42e8a9c6e47d78ec40df1af045500" name="g-recaptcha-response" type="hidden" value="03AKH6MRHEMzqab6Wc_ZYxrn6cVcCeky3AQ5b2PKr2lJT2AvldQ2ZPPiH9o9oAIefHBB3oWeTTWn77_CW-fYICy2R-S2j5DT9U8-iYEgIOmHEQxQs0aMtgjucVjrKo1hSqcqBqj7OU7c5jQgSGxdHVBCRp5pY5EvbGGC2FnDBZ-TYE2yg9UCQCb9acLOQMQX86YHUG57micqrjGZr7csNUaJ0-ylvQkZxk0T0Ne4KlgpfehVJrP4mfaxbui0qJ-FeMHw3JbfQMTTes-BoY8PonSXaAfdU6oMhUBaq3ub-2So91goj_YFOTZTt2YJlQP6pwKHy89nqikWPQmrGj3W3msRecG77TJvPPGcFFVyi37QqSuJnmum1M_cXNNWS5tOOGZvkmqGJEZHmD8gtSNErW1Ccyfd-sDy-ekHgIPNsb938XOCla9kR4jsXmZcxjxXPJhs657LPtBR8le7TxazUMnsNGHazXx000m80NCRE9aa-R5fB7HOv83Pz6YbHoOMMMfJ5-FwsJWHeR">
+                                <script src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></script>
+                                <script>grecaptcha.ready(function () { grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', { action: 'submit' }).then(function (token) { document.getElementById('79d42e8a9c6e47d78ec40df1af045500').value = token; }); });</script>
+</form>
+                    </div>
+                    <div id="recover-password" class="form-signup" style="display:none;">
+                        <div class="text-center">
+                            <h2 class="title-head"><span>Đặt lại mật khẩu</span></h2>
+                        </div>
+                        <div class="fix-sblock text-center">
+                            Bạn quên mật khẩu? Nhập địa chỉ email để lấy lại mật khẩu qua email.
+                        </div>
+                        <form accept-charset="UTF-8" action="/account/recover" method="post" class="has-validation-callback">
+                            <input name="form_type" type="hidden" value="recover_customer_password">
+                            <input name="utf8" type="hidden" value="✓">
+
+                            <div class="form-signup aaaaaaaa">
+
+                            </div>
+
+                            <div class="form-signup clearfix">
+                                <fieldset class="form-group">
+                                    <label>Email<span class="required">*</span></label>
+                                    <input type="email" class="form-control form-control-lg" value="" name="Email" id="recover-email" placeholder="Nhập địa chỉ Email" data-validation="email" pattern="[a-z0-9._%+-]+[a-z0-9.-]+\.[a-z]{2,63}$" data-validation-error-msg="Email sai định dạng" required="">
+                                </fieldset>
+                            </div>
+                            <div class="action_bottom text-center">
+                                <button class="btn btn-style btn-blues" style="margin-top: 15px;" type="submit" value="Lấy lại mật khẩu">Lấy lại mật khẩu</button>
+                            </div>
+                            <div class="text-login text-center">
+                                <p>Quay lại <a href="javascript:;" class="btn-link-style btn-register" onclick="hideRecoverPasswordForm();" title="Quay lại">tại đây.</a></p>
+                            </div>
+
+                            <input id="bd1fd91bea454f6d9a4fe092babb8e08" name="g-recaptcha-response" type="hidden" value="03AKH6MRH4BH-sml2-MG6xfI5Rrm6eU4RBTI0hfILx6Q_BVXriJM1VQK4hZ8RiZfV2rWr-hpKfbf_bI8D7NeVPeRc94mV2yCBQrptlD2v9olhSt0S04Dxz8pxZtqo-5GvHdXdc7oHJk31ApwksEHByMoTNXEHg2sX5-tWY7S5OWk9JR_in50tAvH1wTq6pIfXWsLJn9Gn9o7EroNFMOSLmMcykZhCipUwdkwmU9YkUrgOCCmlwJ4vuv_UIkwj0BSfHcKXNxmYW_V0x_2LxXl01ZBLGa1OdfJEkGwc5Kcsr0mJ6lpVhy8LQTD5_FkhepN12eOa6SgAaZ7vZPXQrFvVb8uimCrV4hYlJdYG2QZpeYoHwJroOAhz5cVyQIFBb5v5sAxBqC1r3eHkmd_zGxaaUSWK5g7PlW2oYcm1FM9OKDlUzJN-uKL7YgDGEynbTYHlfAkNy8sG51On4aGfeUzgUKnjTqRGkUO5_DDFfgHv0cBAHPNwWl9Df2ehpD9uIe-yysJYqQ4zj0LQf">
+                            <script src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></script>
+                            <script>grecaptcha.ready(function () { grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', { action: 'submit' }).then(function (token) { document.getElementById('bd1fd91bea454f6d9a4fe092babb8e08').value = token; }); });</script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+}

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BanNuocHoa.Models.PHANQUYEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NGUOIDUNG.Nguoidung_user)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phanquyen_quyensudung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGUOIDUNG.Nguoidung_user)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phanquyen_quyensudung)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Phanquyen_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Phanquyen_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Phanquyen_ID })
+        </td>
+    </tr>
+}
+
+</table>

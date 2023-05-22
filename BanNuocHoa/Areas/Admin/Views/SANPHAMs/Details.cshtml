@@ -1,0 +1,75 @@
+﻿@model BanNuocHoa.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SANPHAM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.THELOAI.Theloai_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.Theloai_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_anh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanpham_giohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanpham_giohang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sanpham_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

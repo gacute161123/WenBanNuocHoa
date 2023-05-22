@@ -1,0 +1,83 @@
+﻿@model BanNuocHoa.Models.DONHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DONHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOIDUNG.Nguoidung_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOIDUNG.Nguoidung_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SANPHAM.Sanpham_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.Sanpham_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_ngaydat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_ngaydat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_diachi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_sdt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_sdt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_ghichu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_ghichu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donhang_giatien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donhang_giatien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Donhang_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

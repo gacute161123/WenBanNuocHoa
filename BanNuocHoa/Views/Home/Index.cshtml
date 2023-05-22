@@ -1,0 +1,176 @@
+﻿@model PagedList.IPagedList<BanNuocHoa.Models.SANPHAM>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="main_slider" style="background-image: url('../../Areas/Admin/UploadFile/images/bannermoi1.jpg'); width:100%; height:700px">
+    <div class="container fill_height">
+        <div class="row align-items-center fill_height">
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="new_arrivals">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title new_arrivals_title">
+                    <h2>
+                        PRODUCT NEW
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <!-- Product 1 -->
+
+                        <div class="product-item men">
+                            <div class="product discount product_filter">
+                                <div class="product_image">
+                                    <a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})"><img src="@item.Sanpham_anh" alt="" style="width:220px; height:220px"></a>
+                                </div>
+                                <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+
+                                <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>0%</span></div>
+                                <div class="product_info">
+                                    <h6 class="product_name"><a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})">@item.Sanpham_ten</a></h6>
+                                    <div class="product_price"> <a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})" style="color: #e42344; ">  @item.Sanpham_gia đ</a></div>
+                                </div>
+                            </div>
+                            <div class="red_button add_to_cart_button"><a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})">CHI TIẾT SẢN PHẨM</a></div>
+                        </div>
+
+
+                    }<!-- Product 2 -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="text-center" style="margin-top:50px">
+
+    <button class="btn btn-pink" style="background-color: #e83756; border: solid 1.5px black; "><a href="@Url.Action("Allsanpham","Home")" style="color:white;">TẤT CẢ SẢN PHẨM</a></button>
+</div>
+
+@*<div class="col text-center" style="">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, SortOrder = ViewBag.CurrentSort, CurrentStr = ViewBag.CurrentStr }))
+    </div>
+*@
+
+
+<br />
+<br />
+
+<div class="deal_ofthe_week" style="background-color:white;">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <div style="flex: 1; ">
+                <div style=" width: 710px; height: 400px; overflow: hidden;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/Wefkr9wQep0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div style="flex: 1; margin-left:30px">
+                <img src="~/Areas/Admin/UploadFile/images/banner_content.jpg" alt="" style="width:370px;height:400px;">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="best_sellers">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title new_arrivals_title">
+                    <h2>MOST PREFERRED</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="product_slider_container">
+                    <div class="owl-carousel owl-theme product_slider">
+
+                        <!-- Slide 1 -->
+                        @foreach (var item in Model)
+                        {
+                            <a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})">
+                                <div class="owl-item product_slider_item">
+
+                                    <!-- Product 1 -->
+
+                                    <div class="product-item men">
+                                        <div class="product discount product_filter">
+                                            <div class="product_image">
+                                                <img src="@item.Sanpham_anh" alt="" style="width:220px; height:220px">
+                                            </div>
+                                            <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+
+                                            <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>0%</span></div>
+
+                                            <div class="product_info">
+                                                <h6 class="product_name">@item.Sanpham_ten</h6>
+                                                <div class="product_price"> @item.Sanpham_gia đ</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>}
+                        <!-- Slide 2 -->
+                    </div>
+
+                    <!-- Slider Navigation -->
+
+                    <div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter and get 20% off your first purchase</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form action="post">
+                    <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                        <input id="newsletter_email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
+                        <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background-color: #eb94a3">subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

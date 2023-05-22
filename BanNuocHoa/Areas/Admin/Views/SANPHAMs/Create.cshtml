@@ -1,0 +1,111 @@
+﻿@model BanNuocHoa.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>SANPHAM</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_ten, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sanpham_ten, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sanpham_ten, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_mota, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sanpham_mota, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sanpham_mota, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_gia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sanpham_gia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sanpham_gia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_soluong, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sanpham_soluong, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sanpham_soluong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sanpham_anh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sanpham_anh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sanpham_anh, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_anh, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-inline">
+                @Html.EditorFor(model => model.Sanpham_anh,
+ new { htmlAttributes = new { @class = "form-control form-inline", @style = "width:100%!important" } })
+                <input id="chonAnh" type="button" value="Chọn ảnh" class="btn btn-group-lg" />
+            </div>
+            @Html.ValidationMessageFor(model => model.Sanpham_anh, "", new { @class = "text-danger" })
+            <script language="javascrip" type="text/javascript">
+                $(function () {
+                    $("#chonAnh").click(function () {
+                        var ckfiner = new CKFinder(); ckfiner.selectActionFunction =
+                            function (fileUrl) { $("#Sanpham_anh").val(fileUrl); }; ckfiner.popup();
+                    })
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sanpham_giohang, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sanpham_giohang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sanpham_giohang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Theloai_ID, "Theloai_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Theloai_ID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Theloai_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

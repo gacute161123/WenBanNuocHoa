@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BanNuocHoa.Models.THELOAI>
+
+<div class="main_nav_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <div class="logo_container">
+                    <a href="/Home/">
+               
+                        <img src="~/Areas/Admin/UploadFile/images/logo.jpg" style="width:200px;height:75px" />
+                    </a>
+                </div>
+             
+                <nav class="navbar">
+                    <ul class="navbar_menu">
+                        <li><a href="/Home/" style="font-size:14px">Trang Chủ</a></li>
+
+                        @foreach (var item in Model)
+                        {
+                            <li><a href="/SANPHAMs?catid=@item.Theloai_ID" style="font-size:14px">   @Html.DisplayFor(modelItem => item.Theloai_ten)</a></li>
+
+                        }
+
+
+                        <li><a href="@Url.Action("Index","BLOGs")" style="font-size:14px">BLOG</a></li>
+                        @*<li><a href="contact.html" style="font-size:14px">LIÊN HỆ</a></li>*@
+                        <li><a href="/SANPHAMs/IndexSearch"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        <li class="checkout">
+                            <a href="/GIOHANGs/Index" style="background-color:white">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span class="notify" style="color:red" id="CartCount">@Session["count"]</span>
+
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="top_nav_menu">
+
+
+                        <li class="account" style="background-color:white;">
+
+                            <i class="fa fa-user" aria-hidden="true"></i>
+
+                            <ul class="account_selection" style="width:140px;height:105px;background-color:white;">
+                                @if (Session["user_id"] != null)
+                                {
+
+                                    <li style="">@Html.ActionLink("Trang quản trị", "Index", "SANPHAMs", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
+                                    <li><a href="@Url.Action("Logout","LOGINs")">Log out</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Login","LOGINs")">Đăng Nhập</a></li>
+                                    <li style=""><a href="@Url.Action("Register","LOGINs")">Đăng Ký</a></li>
+                                }
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                   
+
+                    <div class="hamburger_container">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

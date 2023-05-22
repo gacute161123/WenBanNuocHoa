@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trần Ngọc Tiến</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="ADOPT">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/coloshop-master/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/coloshop-master/styles/responsive.css">
+    <link href="~/Content/footer.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header trans_300">
+
+            <!-- Top Navigation -->
+
+            <div class="top_nav" style="background-color: #dfb8b7">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="top_nav_left" style="color: rgba(255,255,255,.8);">MIỄN PHÍ SHIP CHO ĐƠN CHỈ TỪ 5.000.000đ</div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="top_nav_right">
+                                <ul class="top_nav_menu">
+
+                                    <!-- Currency / Language / My Account -->
+
+
+                                    <li class="language" style="background-color: #dfb8b7; border-right: solid 1px #dfb8b7; ">
+                                        <a href="#" style="color: rgba(255,255,255,.8);">
+                                            Tiếng Việt
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="language_selection">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Italian</a></li>
+                                            <li><a href="#">German</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="account" style="background-color: #dfb8b7">
+                                        <a href="#" style="color: rgba(255,255,255,.8); width: 150px">
+                                            Trang Quản Trị
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="account_selection">
+                                            @if (Session["user_id"] != null)
+                                            {
+
+                                                <li>@Html.ActionLink("Trang quản trị", "Index", "SANPHAMs", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
+
+                                                <li><a href="@Url.Action("Logout","LOGINs")"><i class="fa fa-sign-in" aria-hidden="true"></i>Log out</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="@Url.Action("Login","LOGINs")"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng Nhập</a></li>
+                                                <li><a href="@Url.Action("Register","LOGINs")"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng Ký</a></li>
+                                            }
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+
+            @{
+                Html.RenderAction("RenderMenu", "Home");
+            }
+
+        </header>
+
+
+        <div class="fs_menu_overlay"></div>
+        <div class="hamburger_menu">
+            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            usd
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li><a href="#">cad</a></li>
+                            <li><a href="#">aud</a></li>
+                            <li><a href="#">eur</a></li>
+                            <li><a href="#">gbp</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            English
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Italian</a></li>
+                            <li><a href="#">German</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            My Account
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="#">home</a></li>
+                    <li class="menu_item"><a href="#">shop</a></li>
+                    <li class="menu_item"><a href="#">promotion</a></li>
+                    <li class="menu_item"><a href="#">pages</a></li>
+                    <li class="menu_item"><a href="#">blog</a></li>
+                    <li class="menu_item"><a href="#">contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slider -->
+
+        @RenderBody()
+        <br />
+        <!-- Banner -->
+        <!-- New Arrivals -->
+        <!-- Deal of the week -->
+        <!-- Best Sellers -->
+        <!-- Benefit -->
+
+        <div class="benefit">
+            <div class="container">
+
+            </div>
+        </div>
+
+        <!-- Blogs -->
+        <!-- Newsletter -->
+
+
+
+        <!-- Footer -->
+
+        <div class="footer">
+
+            <div class="chantrang">
+                <div class="chantrang1">
+                    <h5>ĐỒNG HỒ</h5>
+
+                    <p><a href="">MST: 0109835455</a></p>
+                    <p><a href="">Hà Nội : Tầng 7 tòa nhà Zen</a></p>
+                    <p><a href="">Tower, Số 12 đường Khuất</a></p>
+                    <p><a href="">Duy Tiến, PhườngThanh Xuân</a></p>
+                    <p><a href="">Trung , Quận Thanh Xuân ,</a></p>
+                    <p><a href="">Thành phố Hà Nội, Việt Nam</a></p>
+                    <p><a href="">Hotline: 0969 468 865</a></p>
+                    <p><a href="">Email:</a></p>
+                    <p><a href="">tranngoctien161123@gmail.com</a></p>
+
+                </div>
+                <div class="chantrang2">
+                    <h5>Mua Hàng</h5>
+                    <p><a href="">Trang chủ</a></p>
+                    <p><a href="">ĐỒNG HỒ NAM</a></p>
+                    <p><a href="">ĐỒNG HỒ NỮ</a></p>
+                    <p><a href="">ĐỒNG HỒ ĐÔI</a></p>
+                    <p><a href="">BLOG</a></p>
+                    <p><a href="">LIÊN HỆ</p>
+                </div>
+                <div class="chantrang3">
+                    <h5>Đổi Mùi Miễn Phí Trong 7 Ngày</h5>
+                    <p><a href="">Chính Sách Bảo Mật</a></p>
+                    <p><a href="">Chính Sách Giao Hàng </a></p>
+                    <p><a href="">Chính Sách Thanh Toán</a></p>
+                    <p><a href="">Hơn cả một thương hiệu ,</a></p>
+                    <p><a href="">Một lối sống ...</a></p>
+                    <p><a href="">Tâm Trạng Của Tôi , Nước Hoa Của</a></p>
+                    <p><a href="">Tôi</a></p>
+                </div>
+                <div class="chantrang4">
+                    <h5>ĐĂNG KÝ NHẬN TIN</h5>
+                    <p><a href="">Nhận thông tin sản phẩm mới</a></p>
+                    <p><a href="">nhất, tin khuyến mãi và nhiều</a></p>
+                    <p><a href="">hơn nữa.</a></p>
+                    <div class="sauchantrang4"> <img src="~/Areas/Admin/UploadFile/images/bct.jpg" width="200" height="80"> </div>
+                </div>
+            </div>
+
+
+            <div class="cuoicung">
+                <div class="cuoi">
+                    <div class="cuoi1"><a href="">Việt Nam/Tiếng Việt</a></div>
+                    <div class="cuoi2"><a href="">|</a></div>
+                    <div class="cuoi3"><a href="">Trợ Giúp Truy Cập</a></div>
+                    <div class="cuoi4"><a href="">Điều khoản & Điều kiện</a></div>
+                    <div class="cuoi5"><a href="">Bảo mật</a></div>
+                    <div class="cuoi5"><a href="">Pháp Lý</a></div>
+                </div>
+                <div class="cung">
+                    <div class="cung1"><a href="">Kết Nối Với Chúng Tôi</a></div>
+                    <div class="cung2"><a href=""><i class="bi bi-facebook"></i></a></div>
+                    <div class="cung3"><a href=""><i class="bi bi-youtube"></i></a></div>
+                    <div class="cung4"><a href=""><i class="bi bi-instagram"></i></a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  
+    <script src="~/coloshop-master/js/jquery-3.2.1.min.js"></script>
+    <script src="~/coloshop-master/styles/bootstrap4/popper.js"></script>
+    <script src="~/coloshop-master/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="~/coloshop-master/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/coloshop-master/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/coloshop-master/plugins/easing/easing.js"></script>
+    <script src="~/coloshop-master/js/custom.js"></script>
+
+</body>
+
+</html>
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>
+*@

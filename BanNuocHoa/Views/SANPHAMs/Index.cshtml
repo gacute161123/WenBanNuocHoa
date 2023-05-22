@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BanNuocHoa.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.THELOAI.Theloai_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_anh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_giohang)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Sanpham_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Sanpham_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Sanpham_ID })
+            </td>
+        </tr>
+    }*@
+<br />
+
+<div class="new_arrivals">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title new_arrivals_title">
+                    <h2>
+                        @foreach (var item in Model)
+                        {
+                            @Html.DisplayFor(modelItem => item.THELOAI.Theloai_ten)break;
+                        } ADOPT'
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <!-- Product 1 -->
+
+                        <div class="product-item men">
+                            <div class="product discount product_filter">
+                                <div class="product_image">
+                                    <a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})"><img src="@item.Sanpham_anh" alt="" style="width:220px; height:220px"></a>
+                                </div>
+                                <div class="favorite favorite_left"></div>
+                                <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>0%</span></div>
+                                <div class="product_info">
+                                    <h6 class="product_name"><a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})">@item.Sanpham_ten</a></h6>
+                                    <div class="product_price">  <a href="@Url.Action("Details","SANPHAMs", new {id=item.Sanpham_ID})" style="color: #e42344; ">  @item.Sanpham_gia đ</a></div>
+                                </div>
+                            </div>
+                            <div class="red_button add_to_cart_button"><a href="@Url.Action("Details","SANPHAMs",new {id=item.Sanpham_ID})">CHI TIẾT SẢN PHẨM</a></div>
+                        </div>
+
+
+                    }<!-- Product 2 -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

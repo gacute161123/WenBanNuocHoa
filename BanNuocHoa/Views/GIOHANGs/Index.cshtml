@@ -1,0 +1,145 @@
+﻿@model IEnumerable<BanNuocHoa.Models.GIOHANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+    $(".removecart").click(function () {
+        var model = {};
+        model.id = $(this).siblings(".sanphamid").val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Remove", "GIOHANGs")',
+            data:  JSON.stringify(model) ,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                alert("Xóa thành công sản phẩm khỏi giỏ hàng!")
+                $('#CartCount').text(@Session["count"] - 1);
+                $("#product-" + model.id).remove();
+            },
+            error: function () {
+                alert("Lỗi trong khi xóa sản phẩm khỏi giỏ hàng!");
+            }
+        });
+        return false;
+    });
+});
+</script>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<section class="section-content padding-y">
+    <div class="container">
+
+        <div class="row">
+            <main class="col-md-9">
+                <div class="card">
+
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Sản Phẩm</th>
+                                <th scope="col" width="120">Số lượng</th>
+                                <th scope="col" width="120">Đơn Giá</th>
+                                <th scope="col" class="text-right" width="200"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="product-@item.SANPHAM.Sanpham_ID">
+                                        <td>
+                                            <figure class="itemside">
+                                                <div class="aside"><img src="@item.SANPHAM.Sanpham_anh" class="img-sm" style="width:80px;height:80px"></div>
+                                                <figcaption class="info">
+                                                    <a href="#" class="title text-dark"> <pre>@item.SANPHAM.Sanpham_ten</pre></a>
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="@item.soluong" />
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap">
+                                                <var class="price">@item.SANPHAM.Sanpham_gia đ</var>
+
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="hidden" value="@item.SANPHAM.Sanpham_ID" class="sanphamid" />
+                                            <a href="" class="btn btn-light removecart">Remove</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                              
+                                <div style="display: flex; justify-content: center; margin-bottom:20px;margin-top:20px">
+                                    <img src="~/Areas/Admin/UploadFile/images/giohangtrong.jpg" width="300" height="200" />
+                                   
+                                     </div>
+                            }
+                            </tbody>
+                    </table>
+
+                    <div class="card-body border-top">
+                        <a href="@Url.Action("Index","THANHTOANs")" class="btn btn-primary float-md-right" style="background-color: #fa8a9e; border: 1px solid #fa8a9e; "> THANH TOÁN <i class="fa fa-chevron-right"></i> </a>
+                        <a href="@Url.Action("Index","Home")" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                    </div>
+                </div> <!-- card.// -->
+
+                <div class="alert alert-success mt-3">
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                </div>
+
+            </main> <!-- col.// -->
+            <aside class="col-md-3">
+            
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Tổng Tiền:</dt>
+                            <dd class="text-right">
+                                0đ 
+                                @*    @if (Model != null)
+        {
+            decimal total = 0;
+            foreach (var item in Model)
+            {
+                decimal itemTotal = item.SANPHAM.Sanpham_gia * item.soluong;
+                total += itemTotal;
+            }
+            <p>@total.ToString("N0")</p>
+        }*@
+
+                            </dd>
+                        </dl>
+                        
+                        
+                        <hr>
+                        <p class="text-center mb-3">
+                          
+                            <img src="~/Areas/Admin/UploadFile/images/thanhtoan1.jpg" width="200" height="230">
+                        </p>
+
+                    </div> <!-- card-body.// -->
+                </div>  <!-- card .// -->
+            </aside> <!-- col.// -->
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+

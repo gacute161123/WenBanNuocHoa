@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<BanNuocHoa.Models.SANPHAM>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+
+
+<div class="timkiem">
+    @using (Html.BeginForm("Index", "SANPHAMs", FormMethod.Get))
+    {
+        <p>
+            Tìm Kiếm Theo Tên Sản Phẩm : @Html.TextBox("SearchStr", ViewBag.CurrentStr as string)
+            <input type="submit" value="Search" />
+        </p>
+
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Tên Thể Loại")
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Sanpham_ten)*@
+            @Html.ActionLink("Tên Sản Phẩm", "Index",
+           new
+                {
+                    page = ViewBag.Page,
+                    SortOrder = ViewBag.Sanpham_ten,
+               CurrentStr = ViewBag.CurrentStr
+                }
+          )
+        </th>
+        <th>
+            @Html.DisplayName("Mô Tả Sản Phẩm")
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.Sanpham_gia)*@
+
+            @Html.ActionLink("Giá Sản Phẩm", "Index",
+           new
+                {
+                    page = ViewBag.Page,
+                    SortOrder = ViewBag.Sanpham_gia,
+               CurrentStr = ViewBag.CurrentStr
+                }
+          )
+        </th>
+        <th>
+            @Html.ActionLink("Số Lượng", "Index",
+          new
+               {
+                   page = ViewBag.Page,
+                   SortOrder = ViewBag.Sanpham_soluong,
+              CurrentStr = ViewBag.CurrentStr
+               }
+         )
+        </th>
+        <th>
+            @Html.DisplayName("Ảnh Sản Phẩm")
+        </th>
+      
+        <th>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.THELOAI.Theloai_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham_soluong)
+            </td>
+            <td>
+               @* @Html.DisplayFor(modelItem => item.Sanpham_anh)*@
+                <img src=" @Html.DisplayFor(modelItem => item.Sanpham_anh)" width="50" height="50" />
+            </td>
+         
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Sanpham_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Sanpham_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Sanpham_ID })
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, SortOrder = ViewBag.CurrentSort, CurrentStr = ViewBag.CurrentStr }))
+
